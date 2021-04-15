@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+<style>
+input[type=text] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #3CBC8D;
+  color: white;
+}/*인풋 타입 텍스트 css*/
+
+input[type=password] {
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: #3CBC8D;
+  color: black;
+}<!--변형 인풋 타입 패스워트 css*/
+
+textarea {
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: none;
+  background-color: grey;
+  color: black;
+}/*변형 텍스트에리어 css*/
+
+.button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}/*클래스이름 button css*/
+
+.button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}/*클래스 button에 올려둘시 쉐도우 설정*/
+
+.one{ width:385px;} 
+/*td안 인풋이 1개일때 크기조절 */
+
+/*td안 인풋이 2개일때는 기본설정으로*/
+
+.three{width:117px;}
+/*td안 인풋이 3개일때 크기조절 */
+
+/*td안 인풋이 4개이상은 없음*/
+
+.selButt {height:45px;}
+/* 셀렉트나 버튼 높이 css*/
+
+</style>
+</head>
+<body>
+
+<!-- 기존코드와 거의 동일, 달라진건 css와 id/name설정 -->
+<!-- 기존 value로 표기했던 기본값은 placeholder로 바꿈 -->
+<!-- 주소는 3개 구분이 무슨 의미인지 몰라서 임의대로 placehold 설정함 -->
+<!-- 버튼은 색상 다르게 하고싶어서 css에말고 각각에 background 넣어줌 -->
+<!-- maxlength=추가 -->
+
+<form action="./inputAction.jsp">
+<fieldset>
+	<legend>01 로그인 정보</legend>
+	<table>	<!-- 간격맞추기 위해 사용 -->
+	<!-- 3tr 3td -->
+		<tr> <!-- 1 -->
+			<!-- 아이콘은 캡쳐후 img태그로 입력 -->
+			<td><img src="./img/check.jpg"></td>
+			<td>사용자 ID</td>
+			
+			<td>
+				<!-- 영문만 넣기기능은 무리. 복붙했는데 실패 -->
+				<input type="text" placeholder="영문이름만사용" name="id"> 
+				<!-- 중복확인기능은 무리. 복붙했는데 실패 -->
+				<button class="selButt">중복확인</button>
+				띄어쓰기 없는 영문소문자,숫자조합
+			</td>
+		</tr>
+
+		<tr> <!-- 2 -->
+			<td><img src="./img/check.jpg"></td>
+			<td>비밀번호</td>
+			
+			<td>
+				<!-- 영숫자만 넣기기능은 무리. 복붙했는데 실패 -->
+				<input type="password" name="pw" > 
+				띄어쓰기 없는 영문소문자,숫자조합		
+			</td>
+			
+		<tr> <!-- 2 -->
+			<td><img src="./img/check.jpg"></td>
+			<td>비밀번호 확인</td>
+			
+			<td>
+				<input type="password" name="pww"> 
+				비밀번호를 한번더 입력해주세요		
+			</td>
+	</table>
+</fieldset>
+
+<fieldset>
+	 <legend>02 개인 정보</legend>
+	 <table> <!-- 7tr 3td -->
+	 	<tr> <!-- 1 -->
+	 	<td><img src="./img/check.jpg"></td>
+	 		<td>이름</td>
+	 		<td> <input type="text" name="name" class="one"> </td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 2 -->
+	 		<td>&nbsp;</td>
+	 		<td>주민등록번호</td>
+	 		<td>
+	 		<input type="text" name="frontIdNum" maxlength=6> 
+	 		- 
+	 		<input type="text" name="backIdNum" maxlength=7> </td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 3 -->
+	 		<td>&nbsp;</td>
+	 		<td>생년월일</td>
+	 		<td>
+		 		<input type="text" name="y" class="three" maxlength=4>년 
+		 		<input type="text" name="m" class="three" maxlength=2>월 
+		 		<input type="text" name="d" class="three" maxlength=2>일 
+		 		<!-- 양력이면서 음력인 사람은 없으니깐 -->
+		 		<input type="radio" name="cal" value="양력"> 양력
+		 		<input type="radio" name="cal" value="음력"> 음력	 		
+	 		</td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 4 -->
+	 		<td><img src="./img/check.jpg"></td>
+	 		<td>연락처</td>
+	 		<td>
+	 			<select name="frontCall"class="selButt three">
+	 				<option value="null">==선택==</option>
+	 				<option value="010">010</option>
+	 				<option value="02">02</option>
+	 				<option value="031">031</option>
+	 			</select>
+	 			-
+	 			<input type="text" name="midCall" class="three" maxlength=4>
+	 			-
+	 			<input type="text" name="endCall" class="three" maxlength=4>
+	 			<!-- 자택이거나 직장이니깐 -->
+		 		<input type="radio" name="call" value="자택"> 자택
+		 		<input type="radio" name="call" value="직장"> 직장
+	 		</td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 5 -->
+	 		<td><img src="./img/check.jpg"></td>
+	 		<td>휴대전화</td>
+	 		<td>
+	 		<input type="text" name="frontPhone" class="three" maxlength=3> 
+	 		- 
+	 		<input type="text" name="midPhone"  class="three" maxlength=4>
+	 		- 
+	 		<input type="text" name="endPhone"  class="three" maxlength=4>
+	 		</td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 6 -->
+	 		<td><img src="./img/check.jpg"></td>
+	 		<td>E-mail 주소</td>
+	 		<td>
+	 		<input type="text" placeholder="example@example.com" name="email" class="one">
+	 		</td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 7 -->
+	 		<td><img src="./img/check.jpg"></td>
+	 		<td>주소</td>
+	 		<td>
+					<input type="text" name="frontLoc">
+					<input type="text" name="postNum" maxlength=5>
+					<button  type="button"  class="selButt" onClick="window.open('http://www.epost.go.kr/search.RetrieveIntegrationNewZipCdList.com')">
+	 			우편번호 찾기
+	 			<!-- 하지만 입력값 받아오기기능은 없음, 작동태그를 봐도 모르겠음 -->
+	 				</button>
+		 			<!-- 자택이거나 직장이니깐 -->
+			 		<input type="radio" name="loc" value="자택"> 자택
+			 		<input type="radio" name="loc" value="자택"> 직장 
+	 		</td>
+	 	</tr>
+	 	
+	 	<tr> <!-- 8 주소맨위로 정렬하기 위해서-->
+	 		<td>&nbsp;</td>
+	 		<td>&nbsp;</td>
+	 		<td>
+	 		<!-- input 넓이 조절법은? -->
+		 			<input type="text" name="midLoc" class="one">
+		 		<br>
+		 			<input type="text" name="endLoc" class="one">
+	 		</td>
+	 	</tr>
+	 </table>
+</fieldset>	
+
+<fieldset>	
+	 <legend>03 기타정보</legend>
+	 <table> <!-- 9tr 2td -->
+	 	<tr> <!-- 1 -->
+	 		<td>직업</td>
+	 		<td>
+	 			 <select name="job" class="one selButt">
+	 				<option value="null">==선택하세요==</option>
+	 				<option value="학생">학생</option>
+	 				<option value="자영업">자영업</option>
+	 				<option value="회사원">회사원</option>
+	 			</select>
+	 		</td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 2 -->
+	 		<td>회사명(학교)</td>
+	 		<td>
+	 			<input type="text" name="jobLoc" class="one">
+	 			<button  type="button"  class="selButt" onClick="window.open('http://www.epost.go.kr/search.RetrieveIntegrationNewZipCdList.comm')">
+	 			<!-- 우편번호 찾기라고 생각 -->
+	 			찾기
+	 			</button>
+	 			<!-- 자택이거나 직장이니깐 -->
+	 			<!-- 근데, 자택아니면 학교로 설정해야하지 않나. 이름만 받는거 아니였나? 왜 주소를??? 하지만 클라이언트 요구대로 한다. -->
+			 		<input type="radio" name="work" value="자택"> 자택
+			 		<input type="radio" name="work" value="직장"> 직장 
+	 		</td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 3 -->
+	 		<td>사업자번호</td>
+	 		<td><input type="text" name="bizNum" class="one"></td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 4 -->
+	 		<td>부서명(학과)</td>
+	 		<td><input type="text" name="jobPart" class="one"></td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 5 -->
+	 		<td>직위(학년)</td>
+	 		<td><input type="text" name="grade" class="one"></td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 6 -->
+	 		<td>관심분야</td>
+	 		<td>
+	 		<select name="freeTime" class="one selButt">
+	 				<option value="null">==선택하세요==</option>
+	 				<option value="국어">국어</option>
+	 				<option value="수학">수학</option>
+	 				<option value="영어">영어</option>
+	 			</select>	 		
+	 		</td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 7 -->
+	 		<td>TP웹진 수신</td>
+	 		<td>
+	 		<!-- 둘중하나 니깐 -->
+	 				<input type="radio" name="adMail" value="true"> 수신동의
+			 		<input type="radio" name="adMail" value="False"> 수신하지 않음
+			 		(TP에서 제공하는 Webzine 서비스를 받아보시겠습니까?)
+	 		</td> 		
+	 
+
+	 	</tr>
+	 	
+	 	<tr> <!-- 8 -->
+	 		<td>홈페이지주소</td>
+	 		<td><input type="text" name="web" class="one"></td> 		
+	 	</tr>
+	 	
+	 	<tr> <!-- 9 -->
+	 		<td>자기소개</td>
+	 		<td><textarea rows="5" name="profile" class="one"></textarea></td> 		
+	 	</tr>
+	 
+	 	<tr>
+	 	<td></td>
+	 	<td>
+	 	<%		System.out.print("5의배수: ");
+		for (int i=1; 1<=50; i=i+1) {
+			if (i%5==0) {
+				System.out.print(i);
+			}
+		}
+		%>
+	 	</td>
+	 	</tr>
+	 
+	 </table>
+	 
+</fieldset>
+
+<br>
+
+<fieldset>	 
+	 <button type="submit" class="button" style="background-color:#4CAF50">가입</button> 
+	 <button type="reset" class="button" style="background-color:#f4511e">취소</button>
+</fieldset>
+
+</form>
+</body>
+</html>
